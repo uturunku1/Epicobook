@@ -39,6 +39,7 @@ $(document).ready(function() {
       var userGitHubUserName = $("#git-repo").val();
       userGitHubUserName = 'https://github.com/' + userGitHubUserName;
       var userPersonalWebsite= $("#personal-website").val();
+      userPersonalWebsite = 'http://' + userPersonalWebsite;
       $("#repo-link").text(userGitHubUserName);
       $("#repo-link").attr('href', userGitHubUserName);
       $(".personal-website").attr('href', userPersonalWebsite);
@@ -46,3 +47,5 @@ $(document).ready(function() {
 
     event.preventDefault();
   });
+
+});
