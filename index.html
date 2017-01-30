@@ -9,14 +9,64 @@
     <title>Epicobook</title>
   </head>
   <body>
-    <h1>Epicobook</h1>
     <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
+      <br>
+
+        <div class="well">
+          <header>
+            <h1>Epicobook</h1>
+          </header>
         </div>
-        <div class="col-sm-6">          
-        </div>
-      </div>
+        <button type="button" class="btn btn-info">Home</button>
+        <button type="button" class="btn btn-success">Student Database</button>
+        <h3>Welcome to Epicobook, a database for Epicodus intro-class students.</h3>
+        <h4>Fill out the form below to add your profile to the database.</h4>
+
+        <form id="initialForm">
+          <h5>Enter your full name:</h5>
+          <div class="form-group">
+            <label for="first-name">First: </label>
+            <input type="text" id="first-name" value="Bob">
+            <label for="last-name">Last:</label>
+            <input type="text" id="last-name" value="Smith">
+          </div>
+          <h5>Enter your Github username:</h5>
+          <div class="form-group">
+            <label for="git-repo">https://github.com/ </label>
+            <input type="text" id="git-repo" value="bob-smith">
+          </div>
+          <div class="form-group">
+            <h5>What do you for fun?</h5>
+            <label for="hobbies">Hobbies </label>
+            <input type="text" id="hobbies" value="dancing">
+          </div>
+          <div class="form-group">
+            <h5>Coding experience</h5>
+            <label for="experience">Select:</label>
+            <select class="form-control" id="experience">
+              <option>None</option>
+              <option>A little</option>
+              <option>Moderate</option>
+              <option>Professional Experience</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <h5>What did you do before joining Epicodus?</h5>
+            <label for="job">Previous Job: </label>
+            <input type="text" id="job" value="stripper">
+          </div>
+          <div class="form-group">
+            <h5>Share your social media</h5>
+            <label for="personal-website">Website/blog: </label>
+            <input type="text" id="personal-website" value="bobthehotguy.com">
+          </div>
+          <button type="submit" class="btn">Add your profile</button>
+        </form>
+        <footer>
+          <p><a href="https://wwww.epicodus.com">www.epicodus.com</a></p>
+          <p>By: Stella Huayhuaca, Erica Wright, Phil Putnam, and Patrick McGreevy</p>
+          <p><strong>Copyright 2017</strong></p>
+        </footer>
     </div>
   </body>
 </html>

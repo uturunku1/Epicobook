@@ -1,0 +1,14 @@
+header{
+  text-align: center;
+  background-color: lightgray;
+}
+h3, h4, footer {
+  text-align: center;
+}
+#experience{
+  width: 250px;
+}
+footer {
+  margin-top: 50px;
+  line-height: 8px;
+}
