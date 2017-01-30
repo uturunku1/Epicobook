@@ -12,13 +12,21 @@ $(document).ready(function() {
 
     $("#student-list").append("<li><span class='students'>" + userFirstName + " " + userLastName + "</span></li>");
 
-    var fieldIds = ["first-name", "last-name", "git-repo", "hobbies", "experience", "job", "personal-website"];
+    var fieldIds = ["first-name", "last-name", "hobbies", "experience", "job"];
 
     $("#student-list").last().click(function() {
+      $("#student-info").show();
       fieldIds.forEach(function(id) {
         var userInput = $("#" + id).val();
         $("." + id).text(userInput);
       });
+
+      var userGitHubUserName = $("#git-repo").val();
+      userGitHubUserName = 'https://github.com/' + userGitHubUserName;
+      var userPersonalWebsite= $("#personal-website").val();
+      $("#repo-link").text(userGitHubUserName);
+      $("#repo-link").attr('href', userGitHubUserName);
+      $(".personal-website").attr('href', userPersonalWebsite);
     });
 
     event.preventDefault();

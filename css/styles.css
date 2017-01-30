@@ -19,3 +19,6 @@ footer {
 .students {
   color: blue;
 }
+#student-info {
+  display: none;
+}
