@@ -20,12 +20,22 @@ Account.prototype.fullName = function() {
 // Front-end logic
 
 $(document).ready(function() {
-  $("#initialForm").submit(function(event) {
+  $("#initial-form").submit(function(event) {
+    event.preventDefault();
+
     $(".submit-hide").hide();
     var userFirstName = $("#first-name").val();
     var userLastName = $("#last-name").val();
+    var gitHub, hobbies, codingExp, job;
 
-    $("#student-list").append("<li><span class='students'>" + userFirstName + " " + userLastName + "</span></li>");
+    gitHub = $("#git-repo").val();
+    hobbies = $("#hobbies").val().split(/\s,\s/);
+    codingExp = $("#experience").val();
+    job = $("#job").val();
+
+    var account = new Account(userFirstName, userLastName, "", gitHub, hobbies, "", "", codingExp, job, "");
+
+    $("#student-list").append("<li><span class='students'>" + account.fullName() + "</span></li>");
 
     var fieldIds = ["first-name", "last-name", "hobbies", "experience", "job"];
 
@@ -33,16 +43,16 @@ $(document).ready(function() {
       $("#student-info").show();
       fieldIds.forEach(function(id) {
         var userInput = $("#" + id).val();
-        $("." + id).text(userInput);
+        $("#student-info ." + id).text(userInput);
       });
 
-      var userGitHubUserName = $("#git-repo").val();
-      userGitHubUserName = 'https://github.com/' + userGitHubUserName;
+      var userGitHubURL = 'https://github.com/' + account.gitHubHandle;
       var userPersonalWebsite= $("#personal-website").val();
-      $("#repo-link").text(userGitHubUserName);
-      $("#repo-link").attr('href', userGitHubUserName);
+      $("#repo-link").text(account.gitHubHandle);
+      $("#repo-link").attr('href', userGitHubURL);
       $(".personal-website").attr('href', userPersonalWebsite);
     });
 
-    event.preventDefault();
+
   });
+});
