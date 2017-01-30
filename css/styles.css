@@ -12,3 +12,10 @@ footer {
   margin-top: 50px;
   line-height: 8px;
 }
+.students:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.students {
+  color: blue;
+}
