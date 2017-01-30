@@ -1,14 +1,15 @@
 // Business logic
-function Account(firstName, lastName, email, githubPage, hobbies, favColor, favDestination, codingExp, previousJob) {
+function Account(firstName, lastName, email, githubPage, hobbies, favColor, favDestination, codingExp, previousJob, whereFrom) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.email = email;
-  this.githubPage = githubPage;
+  this.gitHubHandle = githubPage;
   this.hobbies = hobbies;
-  this.favColor = favColor;
-  this.favDestination = favDestination;
-  this.codingExp = codingExp;
+  this.favoriteColor = favColor;
+  this.favoriteDestination = favDestination;
+  this.codingExperience = codingExp;
   this.previousJob = previousJob;
+  this.whereFrom = whereFrom;
 }
 
 Account.prototype.fullName = function() {
