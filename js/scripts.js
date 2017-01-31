@@ -47,7 +47,7 @@ Account.prototype.sortByExperience = function() {
   });
 };
 
-Account.prototype.alphabeticalSort = function() {
+alphabeticalSort = function() {
   accounts.sort(function(a, b) {
     var nameA = a.lastName.toUpperCase();
     var nameB = b.lastName.toUpperCase();
@@ -63,8 +63,12 @@ Account.prototype.alphabeticalSort = function() {
 
 // Front-end logic
 $(document).ready(function() {
+  alphabeticalSort();
+  displayStudents();
+
   $("#form-panel").submit(function(event) {
     event.preventDefault();
+    $("#student-list").show();
 
     $("#form-panel").hide();
     var userFirstName = $("#first-name").val();
@@ -123,6 +127,7 @@ var displayStudents = function() {
 
 var addStudent = function(student) {
   $("#student-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
+  $("#accounts-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
 
   $("#student-list li").last().click(function() {
     $("#student-info .first-name").text(student.firstName);
