@@ -71,7 +71,7 @@ $(document).ready(function() {
     location.href = "join.html";
   };
   document.getElementById("matchlink").onclick = function() {
-    location.href = "#.html";
+    location.href = "match.html";
   };
   document.getElementById("forumlink").onclick = function() {
     location.href = "http://forum.epicodus.com/login";
