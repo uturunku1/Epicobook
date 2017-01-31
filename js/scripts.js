@@ -127,16 +127,18 @@ var addStudent = function(student) {
   $("#student-list li").last().click(function() {
     $("#student-info .first-name").text(student.firstName);
     $("#student-info .last-name").text(student.lastName);
+    $("#student-info .email").text(student.email);
     $("#student-info .hobbies").text(student.hobbies.join(", "));
     $("#student-info .experience").text(student.codingExperience);
+    $("#student-info .favorite-destination").text(student.favoriteDestination);
+    $("#student-info .user-from").text(student.whereFrom);
     $("#student-info .job").text(student.previousJob);
     var userGitHubURL = 'https://github.com/' + student.gitHubHandle;
 
     $("#repo-link").text(userGitHubURL);
     $("#repo-link").attr('href', userGitHubURL);
 
-    var userColor = $("#fav-color").val();
-    $("#student-info").css("color", userColor);
+    $("#student-info").css("color", student.favoriteColor);
     $("#student-info").show();
   });
 };
