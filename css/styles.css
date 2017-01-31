@@ -26,6 +26,10 @@ footer {
 }
 #student-info {
   display: none;
+  background-color: #69A78D;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding-top: 30px;
 }
 #fav-color {
   height: 40px;
@@ -192,4 +196,12 @@ a:hover {
 
 #homelink, #joinlink, #forumlink, #matchlink {
   cursor: pointer;
+}
+
+#student-list {
+  display: none;
+  background-color: #9CC5A1;
+  margin-top: 20px;
+  border-radius: 15px;
+  padding: 30px;
 }

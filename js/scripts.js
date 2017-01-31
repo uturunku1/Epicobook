@@ -116,6 +116,7 @@ $(document).ready(function() {
 
 var displayStudents = function() {
   $("#student-list").empty();
+  $("#student-list").show();
   accounts.forEach(function(element) {
     addStudent(element);
   });
