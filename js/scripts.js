@@ -18,6 +18,43 @@ Account.prototype.fullName = function() {
   return this.firstName + ' ' + this.lastName;
 };
 
+Account.prototype.sortByExperience = function() {
+  accounts.sort(function(a, b) {
+    var expA = 0;
+    var expB = 0;
+    
+
+    // experienceLevels.forEach(function(keyValue) {
+    //   if (keyValue[0] === a){
+    //     expA = keyValue[1];
+    //     alert("inside forEach");
+    //   }
+    //   if (keyValue[0] === b) {
+    //     expB = keyValue[1];
+    //   }
+    // });
+    if (expA < expB) {
+      return -1;
+    }
+    if (expA > expB) {
+      return 1
+    }
+  });
+};
+
+Account.prototype.alphabeticalSort = function() {
+  accounts.sort(function(a, b) {
+    var nameA = a.lastName.toUpperCase();
+    var nameB = b.lastName.toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+  });
+};
+
 
 // Front-end logic
 
@@ -39,9 +76,15 @@ $(document).ready(function() {
     var account = new Account(userFirstName, userLastName, "", gitHub, hobbies, "", "", codingExp, job, "");
     accounts.push(account);
 
+    // account.alphabeticalSort(); // sort alphabetically
+    // accounts.reverse(); // reverse any array, provide reverse-alphabetical order
+    account.sortByExperience();
+
+
     displayStudents();
 
   });
+
 });
 
 var displayStudents = function() {
