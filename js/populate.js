@@ -5,12 +5,12 @@ var makeAccount = function(object) {
   return account;
 };
 
-var json = '[{"firstName":  "Patrick","lastName": "McGreevy","email": "patrick7490@icloud.com","gitHubHandle": "ptown-epicodus","hobbies": ["coding","biking"],"favoriteColor": "blue","codingExperience": "Over 5 years","previousJob": "Tech support","whereFrom": "Portland, OR", "favoriteDestination": "nowhere"}, {"firstName":  "Erica","lastName": "Wright","email": "ericaw21@gmail.com","gitHubHandle": "ericaw21","hobbies": ["SCUBA diving","drawing"],"favoriteColor": "turquoise","codingExperience": "Between 1-4 months","previousJob": "Scheduler","whereFrom": "Texas and England", "favoriteDestination": "ocean"}]';
-
-var data = JSON.parse(json);
-data.forEach(function(element) {
-  accounts.push(makeAccount(element));
-});
+// var json = '[{"firstName":  "Patrick","lastName": "McGreevy","email": "patrick7490@icloud.com","gitHubHandle": "ptown-epicodus","hobbies": ["coding","biking"],"favoriteColor": "blue","codingExperience": "Over 5 years","previousJob": "Tech support","whereFrom": "Portland, OR", "favoriteDestination": "nowhere"}, {"firstName":  "Erica","lastName": "Wright","email": "ericaw21@gmail.com","gitHubHandle": "ericaw21","hobbies": ["SCUBA diving","drawing"],"favoriteColor": "turquoise","codingExperience": "Between 1-4 months","previousJob": "Scheduler","whereFrom": "Texas and England", "favoriteDestination": "ocean"}]';
+//
+// var data = JSON.parse(json);
+// data.forEach(function(element) {
+//   accounts.push(makeAccount(element));
+// });
 
 var sean = new Account("Sean", "Peterson","seanpeterson11@gmail.com", "Seanpeterson", ["doing fun stuff"], "blue", "Chiang Mai", "Between 1-4 weeks", "Doer of things", "United States");
 accounts.push(sean);
