@@ -43,13 +43,39 @@
       <div class="panel">
         <div class="panel-body">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
+              <div id="match-choice">
                 <ul id="accounts-list">
                 </ul>
-
-                <div id="match-criteria">
-                  <button type="button" class="btn">Match me randomly!</button><button type="button" class="btn">Match by location</button><button type="button" class="btn">Match by favorite color</button>
-                </div>
+              </div>
+              <div id="match-criteria">
+                <p>Match me by:<button type="button" class="btn">Location</button><button type="button" class="btn">Favorite color</button><button type="button" class="btn">Randomly!</button></p>
+                <p>You selected:</p>
+                <p><strong>Name: </strong><span class="first-name"></span>&nbsp;<span class="last-name"></span></p>
+                <p><strong>From: </strong><span class="user-from"></span></p>
+                <p><strong>E-mail address: </strong><span class="email"></span></p>
+                <p><strong>Git profile: </strong><a id="repo-link" href=""></a></p>
+                <p><strong>Coding Experience: </strong><span class="experience"></span></p>
+                <p><strong>Previous job: </strong><span class="job"></span></p>
+                <p><strong>Favorite Destination: </strong><span class="favorite-destination"></span></p>
+                <p><strong>Hobbies: </strong><span class="hobbies"></span></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div id="empty-match">
+                <p>Select a student from the list to match them up with another!</p>
+              </div>
+              <div id="match-result">
+                <p>Your match:</p>
+                <p><strong>Name: </strong><span id="match-first-name"></span>&nbsp;<span id="match-last-name"></span></p>
+                <p><strong>From: </strong><span id="match-from"></span></p>
+                <p><strong>E-mail address: </strong><span id="match-email"></span></p>
+                <p><strong>Git profile: </strong><a id="match-repo-link" href=""></a></p>
+                <p><strong>Coding Experience: </strong><span id="match-experience"></span></p>
+                <p><strong>Previous job: </strong><span id="match-job"></span></p>
+                <p><strong>Favorite Destination: </strong><span id="match-favorite-destination"></span></p>
+                <p><strong>Hobbies: </strong><span id="match-hobbies"></span></p>
+              </div>
             </div>
           </div>
         </div>
