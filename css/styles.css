@@ -5,7 +5,7 @@ header{
 h3, h4, footer {
   text-align: center;
 }
-#experience{
+#experience, #fav-color{
   width: 250px;
 }
 footer {
@@ -21,4 +21,7 @@ footer {
 }
 #student-info {
   display: none;
+}
+#fav-color {
+  height: 40px;
 }

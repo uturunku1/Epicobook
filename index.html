@@ -46,10 +46,12 @@
             <h5>Coding experience</h5>
             <label for="experience">Select:</label>
             <select class="form-control" id="experience">
-              <option value="none">None</option>
-              <option value="A little">A little</option>
-              <option value="Moderate">Moderate</option>
-              <option value="Professional">Professional Experience</option>
+              <option value="None - brand new">None - brand new</option>
+              <option value="1-4 weeks experience">1-4 weeks experience</option>
+              <option value="1-4 months experience">1-4 months experience</option>
+              <option value="Under 1 year experience">Under 1 year experience</option>
+              <option value="Under 5 years experience">Under 5 years experience</option>
+              <option value="Over 5 years experience">Under 5 years experience</option>
             </select>
           </div>
           <div class="form-group">
@@ -58,9 +60,18 @@
             <input type="text" id="job" value="stripper">
           </div>
           <div class="form-group">
-            <h5>Share your social media</h5>
-            <label for="personal-website">Website/blog: http://</label>
-            <input type="text" id="personal-website" value="bobthehotguy.com">
+            <h5>Favorite Destination:</h5>
+            <label for="favorite-destination">Destination: </label>
+            <input type="text" id="favorite-destination" value="Cusco, Peru">
+          </div>
+          <div class="form-group">
+            <h5>Where are you from?</h5>
+            <label for="user-from">Country/State, City: </label>
+            <input type="text" id="user-from" value="Portland, OR">
+          </div>
+          <div class="form-group">
+            <label for="fav-color">What is your favorite color?</label>
+            <input id="fav-color" class="form-control" type="color">
           </div>
           <button type="submit" class="btn">Add your profile</button>
         </form>
@@ -76,7 +87,8 @@
               <p><strong>Hobbies: </strong><span class="hobbies"></span></p>
               <p><strong>Coding Experience: </strong><span class="experience"></span></p>
               <p><strong>Previous job: </strong><span class="job"></span></p>
-              <p><strong>Personal website: </strong><a class="personal-website" href="">click here</a></p>
+              <p><strong>Personal website: </strong><span class="favorite-destination"></span></p>
+              <p><strong>From: </strong><span class="user-from"></span></p>
           </div>
 
         </div> <!-- end row -->

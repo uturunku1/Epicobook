@@ -37,7 +37,7 @@ $(document).ready(function() {
 
     $("#student-list").append("<li><span class='students'>" + account.fullName() + "</span></li>");
 
-    var fieldIds = ["first-name", "last-name", "hobbies", "experience", "job"];
+    var fieldIds = ["first-name", "last-name", "hobbies", "experience", "job", "favorite-destination", "user-from"];
 
     $("#student-list").last().click(function() {
       $("#student-info").show();
@@ -47,12 +47,12 @@ $(document).ready(function() {
       });
 
       userGitHubURL = 'https://github.com/' + account.gitHubHandle;
-      var userPersonalWebsite = 'http://' + $("#personal-website").val();
-
       $("#repo-link").text(userGitHubURL);
       $("#repo-link").attr('href', userGitHubURL);
 
-      $(".personal-website").attr('href', userPersonalWebsite);
+      var userColor = $("#fav-color").val();
+      $("#student-info").css("color", userColor);
+
     });
   });
 });
