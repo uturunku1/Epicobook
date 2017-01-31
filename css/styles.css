@@ -1,9 +1,14 @@
+body {
+  background-color: #DCE1DE;
+}
+
 header{
   text-align: center;
   background-color: lightgray;
 }
 h3, h4, footer {
   text-align: center;
+  font-family: 'Kalam', cursive;
 }
 #experience, #fav-color{
   width: 250px;
@@ -27,4 +32,69 @@ footer {
 }
 #email{
   width: 300px;
+}
+
+#titlename {
+  font-family: 'Coming Soon', cursive;
+  font-size: 38px;
+  font-weight: bold;
+}
+
+#navbar {
+  background-color: #49A078;
+  margin: 0px;
+  padding-bottom: 0px;
+}
+
+h6 {
+  font-family: 'Kalam', cursive;
+  font-size: 20px;
+}
+
+#topbar {
+  background-color: #49A078;
+  text-align: left;
+  padding: 2px;
+}
+
+#topbar h6 {
+    padding-left: 15px;
+}
+
+.btn {
+  border: 2px solid #216869;
+  background-color: #9CC5A1;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #DCE1DE;
+}
+
+#form-panel {
+  background-color: #9CC5A1;
+  margin: auto;
+  margin-top: 20px;
+  width: 60%;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  border-radius: 25px;
+}
+
+#form-panel h6 {
+  text-align: center;
+}
+
+#btn-center {
+  text-align: center;
+}
+
+a {
+  color: #216869;
+}
+
+a:hover {
+  color: #9CC5A1;
 }

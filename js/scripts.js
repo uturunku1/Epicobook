@@ -20,10 +20,10 @@ Account.prototype.fullName = function() {
 // Front-end logic
 
 $(document).ready(function() {
-  $("#initial-form").submit(function(event) {
+  $("#form-panel").submit(function(event) {
     event.preventDefault();
 
-    $(".submit-hide").hide();
+    $("#form-panel").hide();
     var userFirstName = $("#first-name").val();
     var userLastName = $("#last-name").val();
     var gitHub, hobbies, codingExp, job;
