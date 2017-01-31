@@ -22,17 +22,22 @@ Account.prototype.sortByExperience = function() {
   accounts.sort(function(a, b) {
     var expA = 0;
     var expB = 0;
-    
+    var experienceLevels = [
+      ["None", 0],
+      ["Between 1-4 weeks", 1],
+      ["Between 1-4 months", 2],
+      ["More than a year", 3],
+      ["Over 5 years", 4]
+    ];
 
-    // experienceLevels.forEach(function(keyValue) {
-    //   if (keyValue[0] === a){
-    //     expA = keyValue[1];
-    //     alert("inside forEach");
-    //   }
-    //   if (keyValue[0] === b) {
-    //     expB = keyValue[1];
-    //   }
-    // });
+    experienceLevels.forEach(function(keyValue) {
+      if (keyValue[0] === a.codingExperience){
+        expA = keyValue[1];
+      }
+      if (keyValue[0] === b.codingExperience) {
+        expB = keyValue[1];
+      }
+    });
     if (expA < expB) {
       return -1;
     }
@@ -77,8 +82,8 @@ $(document).ready(function() {
     accounts.push(account);
 
     // account.alphabeticalSort(); // sort alphabetically
-    // accounts.reverse(); // reverse any array, provide reverse-alphabetical order
-    account.sortByExperience();
+    // account.sortByExperience(); // sort by experience (lowest to highest)
+    // accounts.reverse(); // reverse any array
 
 
     displayStudents();
