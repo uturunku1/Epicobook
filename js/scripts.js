@@ -37,7 +37,7 @@ $(document).ready(function() {
 
     $("#student-list").append("<li><span class='students'>" + account.fullName() + "</span></li>");
 
-    var fieldIds = ["first-name", "last-name", "hobbies", "experience", "job", "favorite-destination", "user-from"];
+    var fieldIds = ["first-name", "last-name", "email", "hobbies", "experience", "job", "favorite-destination", "user-from"];
 
     $("#student-list").last().click(function() {
       $("#student-info").show();

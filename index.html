@@ -14,34 +14,63 @@
 
         <div class="well">
           <header>
-            <h1>Epicobook</h1>
+            <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <a class="navbar-brand" href="#">Epicobook</a>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
+            <h4>Welcome to Epicobook, a database for Epicodus students.</h4>
           </header>
         </div>
-        <button type="button" class="btn btn-info">Home</button>
-        <button type="button" class="btn btn-success">Student Database</button>
+
         <br>
-        <h3>Welcome to Epicobook, a database for Epicodus students.</h3>
         <h4 class="submit-hide">Fill out the form below to add your profile to the database.</h4>
         <br>
         <br>
         <form id="initial-form" class="submit-hide">
-          <h5>Enter your full name:</h5>
+
           <div class="form-group">
+            <h5>Enter your full name:</h5>
             <label for="first-name">First: </label>
             <input type="text" id="first-name" value="Bob">
             <label for="last-name">Last:</label>
             <input type="text" id="last-name" value="Smith">
           </div>
-          <h5>Enter your Github username:</h5>
+
           <div class="form-group">
+            <h5>Where are you from?</h5>
+            <label for="user-from">Country/State, City: </label>
+            <input type="text" id="user-from" value="Portland, OR">
+          </div>
+
+          <div class="form-group">
+            <h5>How to contact you:</h5>
+            <label for="email">E-mail address: </label>
+            <input type="text" id="email" value="luces.huayhuaca@gmail.com">
+          </div>
+
+          <div class="form-group">
+            <h5>Enter your Github username:</h5>
             <label for="git-repo">https://github.com/ </label>
             <input type="text" id="git-repo" value="bob-smith">
           </div>
-          <div class="form-group">
-            <h5>What do you for fun?</h5>
-            <label for="hobbies">Hobbies </label>
-            <input type="text" id="hobbies" value="dancing">
-          </div>
+
           <div class="form-group">
             <h5>Coding experience</h5>
             <label for="experience">Select:</label>
@@ -54,26 +83,32 @@
               <option value="Over 5 years experience">Under 5 years experience</option>
             </select>
           </div>
+
           <div class="form-group">
             <h5>What did you do before joining Epicodus?</h5>
             <label for="job">Previous Job: </label>
             <input type="text" id="job" value="stripper">
           </div>
+
+          <div class="form-group">
+            <h5>What do you for fun?</h5>
+            <label for="hobbies">Hobbies </label>
+            <input type="text" id="hobbies" value="dancing">
+          </div>
+
           <div class="form-group">
             <h5>Favorite Destination:</h5>
             <label for="favorite-destination">Destination: </label>
             <input type="text" id="favorite-destination" value="Cusco, Peru">
           </div>
-          <div class="form-group">
-            <h5>Where are you from?</h5>
-            <label for="user-from">Country/State, City: </label>
-            <input type="text" id="user-from" value="Portland, OR">
-          </div>
+
           <div class="form-group">
             <label for="fav-color">What is your favorite color?</label>
             <input id="fav-color" class="form-control" type="color">
           </div>
+
           <button type="submit" class="btn">Add your profile</button>
+
         </form>
 
         <div class="row">
@@ -83,12 +118,13 @@
           </div>
           <div class="col-md-8" id="student-info">
             <p><strong>Name: </strong><span class="first-name"></span>&nbsp;<span class="last-name"></span></p>
-              <p><strong>Git repo: </strong><a id="repo-link" href=""></a></p>
-              <p><strong>Hobbies: </strong><span class="hobbies"></span></p>
-              <p><strong>Coding Experience: </strong><span class="experience"></span></p>
-              <p><strong>Previous job: </strong><span class="job"></span></p>
-              <p><strong>Personal website: </strong><span class="favorite-destination"></span></p>
-              <p><strong>From: </strong><span class="user-from"></span></p>
+            <p><strong>From: </strong><span class="user-from"></span></p>
+            <p><strong>E-mail address: </strong><span class="email"></span></p>
+            <p><strong>Git profile: </strong><a id="repo-link" href=""></a></p>
+            <p><strong>Coding Experience: </strong><span class="experience"></span></p>
+            <p><strong>Previous job: </strong><span class="job"></span></p>
+            <p><strong>Favorite Destination: </strong><span class="favorite-destination"></span></p>
+            <p><strong>Hobbies: </strong><span class="hobbies"></span></p>
           </div>
 
         </div> <!-- end row -->
