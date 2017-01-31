@@ -62,34 +62,56 @@ Account.prototype.alphabeticalSort = function() {
 
 
 // Front-end logic
-
 $(document).ready(function() {
-
-  $("#initial-form").submit(function(event) {
+  $("#form-panel").submit(function(event) {
     event.preventDefault();
 
-    $(".submit-hide").hide();
+    $("#form-panel").hide();
     var userFirstName = $("#first-name").val();
     var userLastName = $("#last-name").val();
-    var gitHub, hobbies, codingExp, job;
+    var email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom;
 
+    email = $("#email").val();
     gitHub = $("#git-repo").val();
     hobbies = $("#hobbies").val().split(/\s,\s/);
+    favColor = $("#fav-color").val();
+    favDestination = $("#favorite-destination").val();
     codingExp = $("#experience").val();
     job = $("#job").val();
+    whereFrom = $("#user-from").val();
 
-    var account = new Account(userFirstName, userLastName, "", gitHub, hobbies, "", "", codingExp, job, "");
+
+    var account = new Account(userFirstName, userLastName, email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom);
     accounts.push(account);
 
     // account.alphabeticalSort(); // sort alphabetically
     // account.sortByExperience(); // sort by experience (lowest to highest)
     // accounts.reverse(); // reverse any array
 
-
     displayStudents();
 
   });
 
+  $(function() {
+    $("#sort-tabs li").click(function(event) {
+      event.preventDefault();
+      $("li").removeClass("active");
+      $(this).addClass("active");
+    });
+  });
+
+  document.getElementById("homelink").onclick = function() {
+    location.href = "index.html";
+  };
+  document.getElementById("joinlink").onclick = function() {
+    location.href = "join.html";
+  };
+  document.getElementById("matchlink").onclick = function() {
+    location.href = "match.html";
+  };
+  document.getElementById("forumlink").onclick = function() {
+    location.href = "http://forum.epicodus.com/login";
+  };
 });
 
 var displayStudents = function() {
@@ -113,6 +135,8 @@ var addStudent = function(student) {
     $("#repo-link").text(userGitHubURL);
     $("#repo-link").attr('href', userGitHubURL);
 
+    var userColor = $("#fav-color").val();
+    $("#student-info").css("color", userColor);
     $("#student-info").show();
   });
 };
