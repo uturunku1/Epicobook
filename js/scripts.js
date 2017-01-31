@@ -55,4 +55,26 @@ $(document).ready(function() {
 
     });
   });
+
+  $(function() {
+    $("li").click(function(event) {
+      event.preventDefault();
+      $("li").removeClass("active");
+      $(this).addClass("active");
+    });
+  });
+
+  document.getElementById("homelink").onclick = function() {
+    location.href = "index.html";
+  };
+  document.getElementById("joinlink").onclick = function() {
+    location.href = "join.html";
+  };
+  document.getElementById("matchlink").onclick = function() {
+    location.href = "#.html";
+  };
+  document.getElementById("forumlink").onclick = function() {
+    location.href = "http://forum.epicodus.com/login";
+  };
+
 });

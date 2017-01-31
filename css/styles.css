@@ -1,5 +1,5 @@
 body {
-  background-color: #DCE1DE;
+  background-color: #EDEFEE;
 }
 
 header{
@@ -68,7 +68,7 @@ h6 {
 
 .btn:hover {
   cursor: pointer;
-  background-color: #DCE1DE;
+  background-color: #EDEFEE;
 }
 
 #form-panel {
@@ -97,4 +97,99 @@ a {
 
 a:hover {
   color: #9CC5A1;
+}
+
+/*tabs*/
+.tabs li {
+  float: left;
+  position: relative;
+}
+
+.tabs a {
+  float: left;
+  padding: 10px 40px;
+  text-decoration: none;
+  color: white;
+  background: #3D8D8E;
+  -webkit-border-top-left-radius: 15px;
+  -webkit-border-top-right-radius: 15px;
+  -moz-border-radius-topleft: 15px;
+  -moz-border-radius-topright: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.tabs .active {
+  z-index: 3;
+}
+.tabs .active a {
+  background: #9CC5A1;
+  color: black;
+}
+.tabs li:before, .tabs li:after,
+.tabs li a:before, .tabs li a:after {
+  position: absolute;
+  bottom: 0;
+}
+.tabs li:last-child:after,   .tabs li:last-child a:after,
+.tabs li:first-child:before, .tabs li:first-child a:before,
+.tabs .active:after,   .tabs .active:before,
+.tabs .active a:after, .tabs .active a:before {
+  content: "";
+}
+.tabs .active:before, .tabs .active:after {
+  background: #9CC5A1;
+  z-index: 1;
+}
+/* Squares */
+.tabs li:before, .tabs li:after {
+  background: #3D8D8E;
+  width: 10px;
+  height: 10px;
+}
+.tabs li:before {
+  left: -10px;
+}
+.tabs li:after {
+  right: -10px;
+}
+/* Circles */
+.tabs li a:after, .tabs li a:before {
+  width: 20px;
+  height: 20px;
+  /* Circles are circular */
+  -webkit-border-radius: 10px;
+  -moz-border-radius:    10px;
+  border-radius:         10px;
+  background: #EDEFEE;
+
+  /* Circles over squares */
+  z-index: 2;
+}
+.tabs .active a:after, .tabs .active a:before {
+  background: #3D8D8E;
+}
+/* First and last tabs have different
+   outside color needs */
+.tabs li:first-child.active a:before,
+.tabs li:last-child.active a:after {
+  background: #EDEFEE;
+}
+.tabs li a:before {
+  left: -20px;
+}
+.tabs li a:after {
+  right: -20px;
+}
+/*tabs end*/
+
+#open-tab {
+  background-color: #9CC5A1;
+  display: block;
+  margin-top: 60px;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+#homelink, #joinlink, #forumlink, #matchlink {
+  cursor: pointer;
 }
