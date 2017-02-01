@@ -205,3 +205,9 @@ a:hover {
   border-radius: 15px;
   padding: 30px;
 }
+
+#map-section {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
