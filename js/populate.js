@@ -1,9 +1,4 @@
-var makeAccount = function(object) {
-  var o = object;
-  var account = new Account(o.firstName, o.lastName, o.email, o.gitHubHandle, o.hobbies, o.favoriteColor, o.favoriteDestination, o.codingExperience, o.previousJob, o.whereFrom, o.currentLocation);
 
-  return account;
-};
 
 var patrick = new Account("Patrick", "McGreevy", "patrick7490@icloud.com", "ptown-epicodus", ["coding","biking"], "blue", "Nowhere", "Over 5 years", "Tech Support", "Portland, OR", "Beaverton");
 accounts.push(patrick);

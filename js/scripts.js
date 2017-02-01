@@ -1,7 +1,7 @@
 // Business logic
 var accounts = [ ];
 
-function Account(firstName, lastName, email, githubPage, hobbies, favColor, favDestination, codingExp, previousJob, whereFrom) {
+function Account(firstName, lastName, email, githubPage, hobbies, favColor, favDestination, codingExp, previousJob, whereFrom, location) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.email = email;
@@ -12,42 +12,14 @@ function Account(firstName, lastName, email, githubPage, hobbies, favColor, favD
   this.codingExperience = codingExp;
   this.previousJob = previousJob;
   this.whereFrom = whereFrom;
+  this.location = location;
 }
 
 Account.prototype.fullName = function() {
   return this.firstName + ' ' + this.lastName;
 };
 
-Account.prototype.sortByExperience = function() {
-  accounts.sort(function(a, b) {
-    var expA = 0;
-    var expB = 0;
-    var experienceLevels = [
-      ["None", 0],
-      ["Between 1-4 weeks", 1],
-      ["Between 1-4 months", 2],
-      ["More than a year", 3],
-      ["Over 5 years", 4]
-    ];
-
-    experienceLevels.forEach(function(keyValue) {
-      if (keyValue[0] === a.codingExperience){
-        expA = keyValue[1];
-      }
-      if (keyValue[0] === b.codingExperience) {
-        expB = keyValue[1];
-      }
-    });
-    if (expA < expB) {
-      return -1;
-    }
-    if (expA > expB) {
-      return 1
-    }
-  });
-};
-
-Account.prototype.alphabeticalSort = function() {
+var alphabeticalSort = function() {
   accounts.sort(function(a, b) {
     var nameA = a.lastName.toUpperCase();
     var nameB = b.lastName.toUpperCase();
@@ -60,16 +32,67 @@ Account.prototype.alphabeticalSort = function() {
   });
 };
 
+var sortByExperience = function() {
+  accounts.sort(function(a, b) {
+    var expA = 0;
+    var expB = 0;
+    var experienceLevels = [
+      ["None", 0],
+      ["Between 1-4 weeks", 1],
+      ["Between 1-4 months", 2],
+      ["More than a year", 3],
+      ["Over 5 years", 4]
+    ];
+
+    experienceLevels.forEach(function(keyValue) {
+      if (keyValue[0] === a.codingExperience) {
+        expA = keyValue[1];
+      }
+      if (keyValue[0] === b.codingExperience) {
+        expB = keyValue[1];
+      }
+    });
+
+    if (expA < expB) {
+      return -1;
+    }
+    if (expA > expB) {
+      return 1;
+    }
+  });
+};
+
 
 // Front-end logic
 $(document).ready(function() {
+  alphabeticalSort();
+  displayStudents();
+
+  $("#sort-tabs li").click(function(event) {
+    event.preventDefault();
+    $("li").removeClass("active");
+    $(this).addClass("active");
+  });
+
+  $("#one").click(function() {
+    alphabeticalSort();
+    displayStudents();
+  });
+  $("#two").click(function() {
+    sortByExperience();
+    displayStudents();
+  });
+
   $("#form-panel").submit(function(event) {
     event.preventDefault();
-
     $("#form-panel").hide();
+
+    $("#thanks").show();
+    $("student-list").show();
+
     var userFirstName = $("#first-name").val();
     var userLastName = $("#last-name").val();
-    var email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom;
+    var email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom, location;
 
     email = $("#email").val();
     gitHub = $("#git-repo").val();
@@ -79,25 +102,13 @@ $(document).ready(function() {
     codingExp = $("#experience").val();
     job = $("#job").val();
     whereFrom = $("#user-from").val();
+    location = $("#location").val();
 
 
-    var account = new Account(userFirstName, userLastName, email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom);
+    var account = new Account(userFirstName, userLastName, email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom, location);
     accounts.push(account);
 
-    // account.alphabeticalSort(); // sort alphabetically
-    // account.sortByExperience(); // sort by experience (lowest to highest)
-    // accounts.reverse(); // reverse any array
-
     displayStudents();
-
-  });
-
-  $(function() {
-    $("#sort-tabs li").click(function(event) {
-      event.preventDefault();
-      $("li").removeClass("active");
-      $(this).addClass("active");
-    });
   });
 
   document.getElementById("homelink").onclick = function() {
@@ -117,6 +128,7 @@ $(document).ready(function() {
 var displayStudents = function() {
   $("#student-list").empty();
   $("#student-list").show();
+  $("#accounts-list").empty();
   accounts.forEach(function(element) {
     addStudent(element);
   });
@@ -124,20 +136,43 @@ var displayStudents = function() {
 
 var addStudent = function(student) {
   $("#student-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
+  $("#accounts-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
 
   $("#student-list li").last().click(function() {
     $("#student-info .first-name").text(student.firstName);
     $("#student-info .last-name").text(student.lastName);
+    $("#student-info .email").text(student.email);
     $("#student-info .hobbies").text(student.hobbies.join(", "));
     $("#student-info .experience").text(student.codingExperience);
+    $("#student-info .favorite-destination").text(student.favoriteDestination);
+    $("#student-info .user-from").text(student.whereFrom);
     $("#student-info .job").text(student.previousJob);
+    $("#student-info .location").text(student.location);
     var userGitHubURL = 'https://github.com/' + student.gitHubHandle;
 
     $("#repo-link").text(userGitHubURL);
     $("#repo-link").attr('href', userGitHubURL);
 
-    var userColor = $("#fav-color").val();
-    $("#student-info").css("color", userColor);
+    $("#student-info").css("color", student.favoriteColor);
     $("#student-info").show();
+  });
+
+  $("#accounts-list li").last().click(function() {
+    $("#accounts-info .first-name").text(student.firstName);
+    $("#accounts-info .last-name").text(student.lastName);
+    $("#accounts-info .email").text(student.email);
+    $("#accounts-info .hobbies").text(student.hobbies.join(", "));
+    $("#accounts-info .experience").text(student.codingExperience);
+    $("#accounts-info .favorite-destination").text(student.favoriteDestination);
+    $("#accounts-info .user-from").text(student.whereFrom);
+    $("#accounts-info .job").text(student.previousJob);
+    $("#accounts-info .location").text(student.location);
+    var userGitHubURL = 'https://github.com/' + student.gitHubHandle;
+
+    $("#repo-link").text(userGitHubURL);
+    $("#repo-link").attr('href', userGitHubURL);
+
+    $("#accounts-info").css("color", student.favoriteColor);
+    $("#accounts-info").show();
   });
 };

@@ -24,7 +24,8 @@ footer {
 .students {
   color: blue;
 }
-#student-info {
+
+#accounts-info, #student-list, #student-info {
   display: none;
   background-color: #69A78D;
   border-radius: 10px;
@@ -199,7 +200,6 @@ a:hover {
 }
 
 #student-list {
-  display: none;
   background-color: #9CC5A1;
   margin-top: 20px;
   border-radius: 15px;
