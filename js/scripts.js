@@ -1,5 +1,6 @@
 // Business logic
 var accounts = [ ];
+var districtClickIds = ["N", "NE", "SE", "SW", "NW", "VW", "LO", "BV", "HB", "FG"];
 
 function Account(firstName, lastName, email, githubPage, hobbies, favColor, favDestination, codingExp, previousJob, whereFrom, location) {
   this.firstName = firstName;
@@ -38,10 +39,11 @@ var sortByExperience = function() {
     var expB = 0;
     var experienceLevels = [
       ["None", 0],
-      ["Between 1-4 weeks", 1],
-      ["Between 1-4 months", 2],
-      ["More than a year", 3],
-      ["Over 5 years", 4]
+      ["1-4 weeks", 1],
+      ["1-4 months", 2],
+      ["Under 1 year", 3],
+      ["Under 5 years", 4],
+      ["Over 5 years", 5]
     ];
 
     experienceLevels.forEach(function(keyValue) {
@@ -74,6 +76,17 @@ var searching = function() {
 };
 
 
+var mapByStudents = function() {
+  $("#student-list").empty();
+  $("#student-list").show();
+  $("#accounts-list").empty();
+  accounts.forEach(function(element) {
+
+    addStudent(element);
+  });
+};
+
+
 // Front-end logic
 $(document).ready(function() {
   alphabeticalSort();
@@ -91,10 +104,14 @@ $(document).ready(function() {
   });
 
   $("#one").click(function() {
+    $("#map-section").hide();
+    $("#accounts-list").show();
     alphabeticalSort();
     displayStudents(accounts);
   });
   $("#two").click(function() {
+    $("#map-section").hide();
+    $("#accounts-list").show();
     sortByExperience();
     displayStudents(accounts);
   });
@@ -117,6 +134,28 @@ $(document).ready(function() {
 
     $("#match-result").show();
   });
+  $("#three").click(function() {
+    $("#map-section").show();
+    $("#accounts-list").hide();
+  });
+
+//map buttons
+  districtClickIds.forEach(function(id) {
+    $("#" + id).click(function(event) {
+      event.preventDefault();
+      $("#accounts-info").hide();
+      $("#accounts-list").show();
+      $("#accounts-list").empty();
+      accounts.forEach(function(account) {
+        if (account.location === id) {
+          var sortedLocation = [];
+          sortedLocation.push(account);
+          addStudent(account);
+        }
+      });
+    });
+  });
+
 
   $("#form-panel").submit(function(event) {
     event.preventDefault();
