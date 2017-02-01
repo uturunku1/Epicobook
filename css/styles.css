@@ -24,7 +24,7 @@ footer {
 .students {
   color: blue;
 }
-#student-info, #student-list {
+#student-info, #student-list, #thanks {
   display: none;
 }
 #fav-color {

@@ -1,7 +1,7 @@
 // Business logic
 var accounts = [ ];
 
-function Account(firstName, lastName, email, githubPage, hobbies, favColor, favDestination, codingExp, previousJob, whereFrom) {
+function Account(firstName, lastName, email, githubPage, hobbies, favColor, favDestination, codingExp, previousJob, whereFrom, location) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.email = email;
@@ -12,6 +12,7 @@ function Account(firstName, lastName, email, githubPage, hobbies, favColor, favD
   this.codingExperience = codingExp;
   this.previousJob = previousJob;
   this.whereFrom = whereFrom;
+  this.location = location;
 }
 
 Account.prototype.fullName = function() {
@@ -32,7 +33,6 @@ var alphabeticalSort = function() {
 };
 
 var sortByExperience = function() {
-  var experienceLevels = [""]
   accounts.sort(function(a, b) {
     var expA = 0;
     var expB = 0;
@@ -74,14 +74,23 @@ $(document).ready(function() {
     $(this).addClass("active");
   });
 
+  $("#one").click(function() {
+    alphabeticalSort();
+    displayStudents();
+  });
+  $("#two").click(function() {
+    sortByExperience();
+    displayStudents();
+  });
+
   $("#form-panel").submit(function(event) {
     event.preventDefault();
-    $("#student-list").show();
+    $("#thanks").show();
 
     $("#form-panel").hide();
     var userFirstName = $("#first-name").val();
     var userLastName = $("#last-name").val();
-    var email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom;
+    var email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom, location;
 
     email = $("#email").val();
     gitHub = $("#git-repo").val();
@@ -91,9 +100,10 @@ $(document).ready(function() {
     codingExp = $("#experience").val();
     job = $("#job").val();
     whereFrom = $("#user-from").val();
+    location = $("#location").val();
 
 
-    var account = new Account(userFirstName, userLastName, email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom);
+    var account = new Account(userFirstName, userLastName, email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom, location);
     accounts.push(account);
 
     displayStudents();
@@ -115,6 +125,7 @@ $(document).ready(function() {
 
 var displayStudents = function() {
   $("#student-list").empty();
+  $("#accounts-list").empty();
   accounts.forEach(function(element) {
     addStudent(element);
   });
@@ -133,6 +144,7 @@ var addStudent = function(student) {
     $("#accounts-info .favorite-destination").text(student.favoriteDestination);
     $("#accounts-info .user-from").text(student.whereFrom);
     $("#accounts-info .job").text(student.previousJob);
+    $("#accounts-info .location").text(student.location);
     var userGitHubURL = 'https://github.com/' + student.gitHubHandle;
 
     $("#repo-link").text(userGitHubURL);
