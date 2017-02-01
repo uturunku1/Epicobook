@@ -1,5 +1,6 @@
 // Business logic
 var accounts = [ ];
+var districtClickIds = ["N", "NE", "SE", "SW", "NW", "VW", "LO", "BV", "HB", "FG"];
 
 function Account(firstName, lastName, email, githubPage, hobbies, favColor, favDestination, codingExp, previousJob, whereFrom, location) {
   this.firstName = firstName;
@@ -63,6 +64,17 @@ var sortByExperience = function() {
 };
 
 
+var mapByStudents = function() {
+  $("#student-list").empty();
+  $("#student-list").show();
+  $("#accounts-list").empty();
+  accounts.forEach(function(element) {
+
+    addStudent(element);
+  });
+};
+
+
 // Front-end logic
 $(document).ready(function() {
   alphabeticalSort();
@@ -75,13 +87,35 @@ $(document).ready(function() {
   });
 
   $("#one").click(function() {
+    $("#map-section").hide();
     alphabeticalSort();
     displayStudents();
   });
   $("#two").click(function() {
+    $("#map-section").hide();
     sortByExperience();
     displayStudents();
   });
+  $("#three").click(function() {
+    $("#map-section").show();
+    $("#accounts-list").hide();
+  });
+
+//map buttons
+  districtClickIds.forEach(function(id) {
+    $("#" + id).click(function() {
+      $("#accounts-list").show();
+      $("#accounts-list").empty();
+      accounts.forEach(function(account) {
+        if (account.location === id) {
+          var sortedLocation = [];
+          sortedLocation.push(account);
+          addStudent(account);
+        }
+      });
+    });
+  });
+
 
   $("#form-panel").submit(function(event) {
     event.preventDefault();
