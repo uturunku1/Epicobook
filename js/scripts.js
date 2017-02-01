@@ -2,7 +2,7 @@
 var accounts = [ ];
 var districtClickIds = ["N", "NE", "SE", "SW", "NW", "VW", "LO", "BV", "HB", "FG"];
 
-function Account(firstName, lastName, email, githubPage, hobbies, favColor, favDestination, codingExp, previousJob, whereFrom, location) {
+function Account(firstName, lastName, email, githubPage, hobbies, favColor, favDestination, codingExp, previousJob, whereFrom, location, pictureURL) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.email = email;
@@ -14,6 +14,7 @@ function Account(firstName, lastName, email, githubPage, hobbies, favColor, favD
   this.previousJob = previousJob;
   this.whereFrom = whereFrom;
   this.location = location;
+  this.pictureURL = pictureURL;
 }
 
 Account.prototype.fullName = function() {
@@ -107,23 +108,29 @@ $(document).ready(function() {
 
   $("#one").click(function() {
     $("#map-section").hide();
+    $("#accounts-info").hide();
     $("#accounts-list").show();
     alphabeticalSort();
     displayStudents(accounts);
   });
+
   $("#two").click(function() {
     $("#map-section").hide();
+    $("#accounts-info").hide();
     $("#accounts-list").show();
     sortByExperience();
     displayStudents(accounts);
   });
+
   $("#randomly").click(function() {
     matchRandomly();
     // displayStudents(accounts);
   });
+
   $("#three").click(function() {
     $("#map-section").show();
     $("#accounts-list").hide();
+    $("#accounts-info").hide();
   });
 
 //map buttons
@@ -149,7 +156,6 @@ $(document).ready(function() {
     $("#form-panel").hide();
 
     $("#thanks").show();
-    $("student-list").show();
 
     var userFirstName = $("#first-name").val();
     var userLastName = $("#last-name").val();
@@ -164,12 +170,14 @@ $(document).ready(function() {
     job = $("#job").val();
     whereFrom = $("#user-from").val();
     location = $("#location").val();
+    userPic = "";
 
 
-    var account = new Account(userFirstName, userLastName, email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom, location);
+    var account = new Account(userFirstName, userLastName, email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom, location, userPic);
     accounts.push(account);
 
     displayStudents(accounts);
+    $("#student-list").show();
   });
 
   document.getElementById("homelink").onclick = function() {
@@ -188,7 +196,6 @@ $(document).ready(function() {
 
 var displayStudents = function(list) {
   $("#student-list").empty();
-  $("#student-list").show();
   $("#accounts-list").empty();
   list.forEach(function(element) {
     addStudent(element);
@@ -200,6 +207,7 @@ var addStudent = function(student) {
   $("#accounts-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
 
   $("#student-list li").last().click(function() {
+    $("#student-info img").attr('src', student.pictureURL);
     $("#student-info .first-name").text(student.firstName);
     $("#student-info .last-name").text(student.lastName);
     $("#student-info .email").text(student.email);
@@ -219,6 +227,7 @@ var addStudent = function(student) {
   });
 
   $("#accounts-list li").last().click(function() {
+    $("#accounts-info img").attr('src', student.pictureURL);
     $("#accounts-info .first-name").text(student.firstName);
     $("#accounts-info .last-name").text(student.lastName);
     $("#accounts-info .email").text(student.email);
