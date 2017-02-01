@@ -85,9 +85,11 @@ $(document).ready(function() {
 
   $("#form-panel").submit(function(event) {
     event.preventDefault();
-    $("#thanks").show();
-
     $("#form-panel").hide();
+
+    $("#thanks").show();
+    $("student-list").show();
+
     var userFirstName = $("#first-name").val();
     var userLastName = $("#last-name").val();
     var email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom, location;
@@ -125,6 +127,7 @@ $(document).ready(function() {
 
 var displayStudents = function() {
   $("#student-list").empty();
+  $("#student-list").show();
   $("#accounts-list").empty();
   accounts.forEach(function(element) {
     addStudent(element);
@@ -135,10 +138,29 @@ var addStudent = function(student) {
   $("#student-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
   $("#accounts-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
 
+  $("#student-list li").last().click(function() {
+    $("#student-info .first-name").text(student.firstName);
+    $("#student-info .last-name").text(student.lastName);
+    $("#student-info .email").text(student.email);
+    $("#student-info .hobbies").text(student.hobbies.join(", "));
+    $("#student-info .experience").text(student.codingExperience);
+    $("#student-info .favorite-destination").text(student.favoriteDestination);
+    $("#student-info .user-from").text(student.whereFrom);
+    $("#student-info .job").text(student.previousJob);
+    $("#student-info .location").text(student.location);
+    var userGitHubURL = 'https://github.com/' + student.gitHubHandle;
+
+    $("#repo-link").text(userGitHubURL);
+    $("#repo-link").attr('href', userGitHubURL);
+
+    $("#student-info").css("color", student.favoriteColor);
+    $("#student-info").show();
+  });
+
   $("#accounts-list li").last().click(function() {
     $("#accounts-info .first-name").text(student.firstName);
     $("#accounts-info .last-name").text(student.lastName);
-    $("#student-info .email").text(student.email);
+    $("#accounts-info .email").text(student.email);
     $("#accounts-info .hobbies").text(student.hobbies.join(", "));
     $("#accounts-info .experience").text(student.codingExperience);
     $("#accounts-info .favorite-destination").text(student.favoriteDestination);
