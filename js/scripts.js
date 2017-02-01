@@ -18,36 +18,7 @@ Account.prototype.fullName = function() {
   return this.firstName + ' ' + this.lastName;
 };
 
-Account.prototype.sortByExperience = function() {
-  accounts.sort(function(a, b) {
-    var expA = 0;
-    var expB = 0;
-    var experienceLevels = [
-      ["None", 0],
-      ["Between 1-4 weeks", 1],
-      ["Between 1-4 months", 2],
-      ["More than a year", 3],
-      ["Over 5 years", 4]
-    ];
-
-    experienceLevels.forEach(function(keyValue) {
-      if (keyValue[0] === a.codingExperience){
-        expA = keyValue[1];
-      }
-      if (keyValue[0] === b.codingExperience) {
-        expB = keyValue[1];
-      }
-    });
-    if (expA < expB) {
-      return -1;
-    }
-    if (expA > expB) {
-      return 1
-    }
-  });
-};
-
-alphabeticalSort = function() {
+var alphabeticalSort = function() {
   accounts.sort(function(a, b) {
     var nameA = a.lastName.toUpperCase();
     var nameB = b.lastName.toUpperCase();
@@ -60,11 +31,48 @@ alphabeticalSort = function() {
   });
 };
 
+var sortByExperience = function() {
+  var experienceLevels = [""]
+  accounts.sort(function(a, b) {
+    var expA = 0;
+    var expB = 0;
+    var experienceLevels = [
+      ["None", 0],
+      ["Between 1-4 weeks", 1],
+      ["Between 1-4 months", 2],
+      ["More than a year", 3],
+      ["Over 5 years", 4]
+    ];
+
+    experienceLevels.forEach(function(keyValue) {
+      if (keyValue[0] === a.codingExperience) {
+        expA = keyValue[1];
+      }
+      if (keyValue[0] === b.codingExperience) {
+        expB = keyValue[1];
+      }
+    });
+
+    if (expA < expB) {
+      return -1;
+    }
+    if (expA > expB) {
+      return 1;
+    }
+  });
+};
+
 
 // Front-end logic
 $(document).ready(function() {
   alphabeticalSort();
   displayStudents();
+
+  $("#sort-tabs li").click(function(event) {
+    event.preventDefault();
+    $("li").removeClass("active");
+    $(this).addClass("active");
+  });
 
   $("#form-panel").submit(function(event) {
     event.preventDefault();
@@ -88,20 +96,7 @@ $(document).ready(function() {
     var account = new Account(userFirstName, userLastName, email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom);
     accounts.push(account);
 
-    // account.alphabeticalSort(); // sort alphabetically
-    // account.sortByExperience(); // sort by experience (lowest to highest)
-    // accounts.reverse(); // reverse any array
-
     displayStudents();
-
-  });
-
-  $(function() {
-    $("#sort-tabs li").click(function(event) {
-      event.preventDefault();
-      $("li").removeClass("active");
-      $(this).addClass("active");
-    });
   });
 
   document.getElementById("homelink").onclick = function() {
@@ -129,21 +124,21 @@ var addStudent = function(student) {
   $("#student-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
   $("#accounts-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
 
-  $("#student-list li").last().click(function() {
-    $("#student-info .first-name").text(student.firstName);
-    $("#student-info .last-name").text(student.lastName);
+  $("#accounts-list li").last().click(function() {
+    $("#accounts-info .first-name").text(student.firstName);
+    $("#accounts-info .last-name").text(student.lastName);
     $("#student-info .email").text(student.email);
-    $("#student-info .hobbies").text(student.hobbies.join(", "));
-    $("#student-info .experience").text(student.codingExperience);
-    $("#student-info .favorite-destination").text(student.favoriteDestination);
-    $("#student-info .user-from").text(student.whereFrom);
-    $("#student-info .job").text(student.previousJob);
+    $("#accounts-info .hobbies").text(student.hobbies.join(", "));
+    $("#accounts-info .experience").text(student.codingExperience);
+    $("#accounts-info .favorite-destination").text(student.favoriteDestination);
+    $("#accounts-info .user-from").text(student.whereFrom);
+    $("#accounts-info .job").text(student.previousJob);
     var userGitHubURL = 'https://github.com/' + student.gitHubHandle;
 
     $("#repo-link").text(userGitHubURL);
     $("#repo-link").attr('href', userGitHubURL);
 
-    $("#student-info").css("color", student.favoriteColor);
-    $("#student-info").show();
+    $("#accounts-info").css("color", student.favoriteColor);
+    $("#accounts-info").show();
   });
 };
