@@ -39,10 +39,11 @@ var sortByExperience = function() {
     var expB = 0;
     var experienceLevels = [
       ["None", 0],
-      ["Between 1-4 weeks", 1],
-      ["Between 1-4 months", 2],
-      ["More than a year", 3],
-      ["Over 5 years", 4]
+      ["1-4 weeks", 1],
+      ["1-4 months", 2],
+      ["Under 1 year", 3],
+      ["Under 5 years", 4],
+      ["Over 5 years", 5]
     ];
 
     experienceLevels.forEach(function(keyValue) {
@@ -88,11 +89,13 @@ $(document).ready(function() {
 
   $("#one").click(function() {
     $("#map-section").hide();
+    $("#accounts-list").show();
     alphabeticalSort();
     displayStudents();
   });
   $("#two").click(function() {
     $("#map-section").hide();
+    $("#accounts-list").show();
     sortByExperience();
     displayStudents();
   });
@@ -103,7 +106,9 @@ $(document).ready(function() {
 
 //map buttons
   districtClickIds.forEach(function(id) {
-    $("#" + id).click(function() {
+    $("#" + id).click(function(event) {
+      event.preventDefault();
+      $("#accounts-info").hide();
       $("#accounts-list").show();
       $("#accounts-list").empty();
       accounts.forEach(function(account) {
