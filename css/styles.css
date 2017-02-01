@@ -199,6 +199,10 @@ a:hover {
   cursor: pointer;
 }
 
+#match-result {
+  display: none;
+}
+
 #student-list {
   background-color: #9CC5A1;
   margin-top: 20px;

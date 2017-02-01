@@ -62,9 +62,7 @@ var sortByExperience = function() {
   });
 };
 var matchRandomly = function() {
-  var randomAccount = accounts[Math.floor(Math.random()*accounts.length)];
-  alert(randomAccount.firstName);
-  return console.log(randomAccount);
+  return accounts[Math.floor(Math.random()*accounts.length)];
 };
 
 var searching = function() {
@@ -100,9 +98,24 @@ $(document).ready(function() {
     sortByExperience();
     displayStudents(accounts);
   });
+
   $("#randomly").click(function() {
-    matchRandomly();
-    // displayStudents(accounts);
+    var match = matchRandomly();
+    $(".chosen").text(match.firstName);
+
+    $("#match-first-name").text(match.firstName);
+    $("#match-last-name").text(match.lastName);
+    $("#match-from").text(match.whereFrom);
+    $("#match-email").text(match.email);
+    var link = $("#match-repo-link");
+    link.text('https://github.com/' + match.gitHubHandle);
+    link.attr('href', 'https://github.com/' + match.gitHubHandle);
+    $("#match-experience").text(match.codingExperience);
+    $("#match-job").text(match.previousJob);
+    $("#match-favorite-destination").text(match.favoriteDestination);
+    $("#match-hobbies").text(match.hobbies.join(", "));
+
+    $("#match-result").show();
   });
 
   $("#form-panel").submit(function(event) {
@@ -118,7 +131,7 @@ $(document).ready(function() {
 
     email = $("#email").val();
     gitHub = $("#git-repo").val();
-    hobbies = $("#hobbies").val().split(/\s,\s/);
+    hobbies = $("#hobbies").val().split(/\s*,\s*/);
     favColor = $("#fav-color").val();
     favDestination = $("#favorite-destination").val();
     codingExp = $("#experience").val();
