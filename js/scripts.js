@@ -21,23 +21,23 @@ Account.prototype.fullName = function() {
   return this.firstName + ' ' + this.lastName;
 };
 
-var alphabeticalSort = function() {
-  accounts.sort(function(a, b) {
+var alphabeticalSort = function(list) {
+  list.sort(function(a, b) {
     var nameA = a.lastName.toUpperCase();
     var nameB = b.lastName.toUpperCase();
-    if (nameA < nameB) {
+    if (nameA < nameB)
       return -1;
-    }
-    if (nameA > nameB) {
+    if (nameA > nameB)
       return 1;
-    }
+    else
+      return 0;
   });
 };
 
-var sortByExperience = function() {
-  accounts.sort(function(a, b) {
-    var expA = 0;
-    var expB = 0;
+var experienceSort = function(list) {
+  list.sort(function(a, b) {
+    var experienceA = 0;
+    var experienceB = 0;
     var experienceLevels = [
       ["None", 0],
       ["1-4 weeks", 1],
@@ -49,53 +49,43 @@ var sortByExperience = function() {
 
     experienceLevels.forEach(function(keyValue) {
       if (keyValue[0] === a.codingExperience) {
-        expA = keyValue[1];
+        experienceA = keyValue[1];
       }
       if (keyValue[0] === b.codingExperience) {
-        expB = keyValue[1];
+        experienceB = keyValue[1];
       }
     });
 
-    if (expA < expB) {
+    if (experienceA < experienceB)
       return -1;
-    }
-    if (expA > expB) {
+    if (experienceA > experienceB)
       return 1;
-    }
+    else
+      return 0;
   });
 };
-var matchRandomly = function() {
-  return accounts[Math.floor(Math.random()*accounts.length)];
+
+var randomMatch = function(list) {
+  return list[Math.floor(Math.random() * list.length)];
 };
 
-var searching = function() {
-  var find = $("#find").val();
-  var found = accounts.filter(function(x) {
-    return (x.firstName === find) || (x.lastName === find);
+var search = function(searchTerm) {
+  var found = accounts.filter(function(a) {
+    return (a.firstName === searchTerm) || (a.lastName === searchTerm);
   });
   return found;
 };
 
 
-var mapByStudents = function() {
-  $("#student-list").empty();
-  $("#student-list").show();
-  $("#accounts-list").empty();
-  accounts.forEach(function(element) {
-
-    addStudent(element);
-  });
-};
-
-
 // Front-end logic
 $(document).ready(function() {
-  alphabeticalSort();
-  displayStudents(accounts);
+  alphabeticalSort(accounts);
+  displayList("#accounts", accounts);
 
   $("#searchbutton").click(function(event) {
     event.preventDefault();
-    displayStudents(searching());
+    var searchFor = $("#find").val();;
+    displayList("#accounts", search(searchFor));
   });
 
   $("#sort-tabs li").click(function(event) {
@@ -108,35 +98,22 @@ $(document).ready(function() {
     $("#map-section").hide();
     $("#accounts-info").hide();
     $("#accounts-list").show();
-    alphabeticalSort();
-    displayStudents(accounts);
+    alphabeticalSort(accounts);
+    displayList("#accounts", accounts);
   });
 
   $("#two").click(function() {
     $("#map-section").hide();
     $("#accounts-info").hide();
     $("#accounts-list").show();
-    sortByExperience();
-    displayStudents(accounts);
+    experienceSort(accounts);
+    displayList("#accounts", accounts);
   });
 
   $("#randomly").click(function() {
-    var match = matchRandomly();
+    var match = randomMatch(accounts);
     $(".chosen").text(match.firstName);
-
-    $("#match-first-name").text(match.firstName);
-    $("#match-last-name").text(match.lastName);
-    $("#match-from").text(match.whereFrom);
-    $("#match-email").text(match.email);
-    var link = $("#match-repo-link");
-    link.text('https://github.com/' + match.gitHubHandle);
-    link.attr('href', 'https://github.com/' + match.gitHubHandle);
-    $("#match-experience").text(match.codingExperience);
-    $("#match-job").text(match.previousJob);
-    $("#match-favorite-destination").text(match.favoriteDestination);
-    $("#match-hobbies").text(match.hobbies.join(", "));
-
-    $("#match-result").show();
+    populateInfo(".match-result", match);
   });
 
   $("#three").click(function() {
@@ -145,7 +122,7 @@ $(document).ready(function() {
     $("#accounts-info").hide();
   });
 
-//map buttons
+  // map buttons
   districtClickIds.forEach(function(id) {
     $("#" + id).click(function(event) {
       event.preventDefault();
@@ -156,7 +133,7 @@ $(document).ready(function() {
         if (account.location === id) {
           var sortedLocation = [];
           sortedLocation.push(account);
-          addStudent(account);
+          addStudent("#accounts", account);
         }
       });
     });
@@ -184,12 +161,10 @@ $(document).ready(function() {
     location = $("#location").val();
     userPic = "";
 
-
     var account = new Account(userFirstName, userLastName, email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom, location, userPic);
     accounts.push(account);
 
-    displayStudents(accounts);
-    $("#student-list").show();
+    displayList("#accounts", accounts);
   });
 
   document.getElementById("homelink").onclick = function() {
@@ -206,55 +181,45 @@ $(document).ready(function() {
   };
 });
 
-var displayStudents = function(list) {
-  $("#student-list").empty();
-  $("#accounts-list").empty();
+var displayList = function(id, list) {
+  $(id + "-list").empty();
   list.forEach(function(element) {
-    addStudent(element);
+    addStudent(id, element);
   });
 };
 
-var addStudent = function(student) {
-  $("#student-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
-  $("#accounts-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
+var addStudent = function(id, student) {
+  $(id + "-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
 
-  $("#student-list li").last().click(function() {
-    $("#student-info img").attr('src', student.pictureURL);
-    $("#student-info .first-name").text(student.firstName);
-    $("#student-info .last-name").text(student.lastName);
-    $("#student-info .email").text(student.email);
-    $("#student-info .hobbies").text(student.hobbies.join(", "));
-    $("#student-info .experience").text(student.codingExperience);
-    $("#student-info .favorite-destination").text(student.favoriteDestination);
-    $("#student-info .user-from").text(student.whereFrom);
-    $("#student-info .job").text(student.previousJob);
-    $("#student-info .location").text(student.location);
-    var userGitHubURL = 'https://github.com/' + student.gitHubHandle;
-
-    $("#repo-link").text(userGitHubURL);
-    $("#repo-link").attr('href', userGitHubURL);
-
-    $("#student-info").css("color", student.favoriteColor);
-    $("#student-info").show();
+  $(id + "-list li").last().click(function() {
+    populateInfo(id + "-info", student);
   });
+};
 
-  $("#accounts-list li").last().click(function() {
-    $("#accounts-info img").attr('src', student.pictureURL);
-    $("#accounts-info .first-name").text(student.firstName);
-    $("#accounts-info .last-name").text(student.lastName);
-    $("#accounts-info .email").text(student.email);
-    $("#accounts-info .hobbies").text(student.hobbies.join(", "));
-    $("#accounts-info .experience").text(student.codingExperience);
-    $("#accounts-info .favorite-destination").text(student.favoriteDestination);
-    $("#accounts-info .user-from").text(student.whereFrom);
-    $("#accounts-info .job").text(student.previousJob);
-    $("#accounts-info .location").text(student.location);
-    var userGitHubURL = 'https://github.com/' + student.gitHubHandle;
+var populateInfo = function(id, account) {
+  $(id + " .first-name").text(account.firstName);
+  $(id + " .last-name").text(account.lastName);
+  $(id + " .email").text(account.email);
+  $(id + " .job").text(account.previousJob);
+  $(id + " .favorite-destination").text(account.favoriteDestination);
+  $(id + " .experience").text(account.codingExperience);
+  $(id + " .from").text(account.whereFrom);
+  $(id + " .location").text(account.location);
+  $(id + " .hobbies").text(account.hobbies.join(", "));
+  $(id + " img").attr("src", account.pictureURL);
 
-    $("#repo-link").text(userGitHubURL);
-    $("#repo-link").attr('href', userGitHubURL);
+  var userGitHubURL = 'https://github.com/' + account.gitHubHandle;
 
-    $("#accounts-info").css("color", student.favoriteColor);
-    $("#accounts-info").show();
+  $(id + " .repo-link").text(userGitHubURL);
+  $(id + " .repo-link").attr("href", userGitHubURL);
+
+  $(id).css("color", account.favoriteColor);
+  $(id).show();
+};
+
+var mapByStudents = function() {
+  $("#accounts-list").empty();
+  accounts.forEach(function(element) {
+    addStudent("#accounts", element);
   });
 };

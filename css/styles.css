@@ -25,13 +25,18 @@ footer {
   color: blue;
 }
 
-#accounts-info, #student-list, #student-info {
-  display: none;
+#accounts-info,
+.list {
   background-color: #69A78D;
   border-radius: 10px;
   margin-top: 20px;
   padding-top: 30px;
 }
+
+#accounts-info {
+  display: none;
+}
+
 #fav-color {
   height: 40px;
 }
