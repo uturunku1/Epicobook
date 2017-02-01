@@ -61,12 +61,30 @@ var sortByExperience = function() {
     }
   });
 };
+var matchRandomly = function() {
+  var randomAccount = accounts[Math.floor(Math.random()*accounts.length)];
+  alert(randomAccount.firstName);
+  return console.log(randomAccount);
+};
+
+var searching = function() {
+  var find = $("#find").val();
+  var found = accounts.filter(function(x) {
+    return (x.firstName === find) || (x.lastName === find);
+  });
+  return found;
+};
 
 
 // Front-end logic
 $(document).ready(function() {
   alphabeticalSort();
-  displayStudents();
+  displayStudents(accounts);
+
+  $("#searchbutton").click(function(event) {
+    event.preventDefault();
+    displayStudents(searching());
+  });
 
   $("#sort-tabs li").click(function(event) {
     event.preventDefault();
@@ -76,11 +94,15 @@ $(document).ready(function() {
 
   $("#one").click(function() {
     alphabeticalSort();
-    displayStudents();
+    displayStudents(accounts);
   });
   $("#two").click(function() {
     sortByExperience();
-    displayStudents();
+    displayStudents(accounts);
+  });
+  $("#randomly").click(function() {
+    matchRandomly();
+    // displayStudents(accounts);
   });
 
   $("#form-panel").submit(function(event) {
@@ -108,7 +130,7 @@ $(document).ready(function() {
     var account = new Account(userFirstName, userLastName, email, gitHub, hobbies, favColor, favDestination, codingExp, job, whereFrom, location);
     accounts.push(account);
 
-    displayStudents();
+    displayStudents(accounts);
   });
 
   document.getElementById("homelink").onclick = function() {
@@ -125,11 +147,11 @@ $(document).ready(function() {
   };
 });
 
-var displayStudents = function() {
+var displayStudents = function(list) {
   $("#student-list").empty();
   $("#student-list").show();
   $("#accounts-list").empty();
-  accounts.forEach(function(element) {
+  list.forEach(function(element) {
     addStudent(element);
   });
 };
