@@ -66,12 +66,29 @@ var experienceSort = function(list) {
 };
 
 var randomMatch = function(list) {
-  return list[Math.floor(Math.random() * list.length)];
+  getMatch= list[Math.floor(Math.random() * list.length)];
+  return getMatch;
 };
+
+
+
+var locationMatch = function(studentLocation, studentLastName) {
+  var accountsByLocation = accounts.filter(function(account) {
+    return (account.location === studentLocation) && (account.lastName != studentLastName);
+  });
+  if (accountsByLocation.length>0) {
+    return randomMatch(accountsByLocation);
+  } else {
+    return alert("Sorry, no match for your area. You're lonely in there.")
+  }
+  // return randomMatch(accountsByLocation);
+};
+
+
 
 var search = function(searchTerm) {
   var found = accounts.filter(function(a) {
-    return (a.firstName === searchTerm) || (a.lastName === searchTerm);
+    return (a.firstName.toUpperCase() === searchTerm.toUpperCase()) || (a.lastName.toUpperCase() === searchTerm.toUpperCase());
   });
   return found;
 };
@@ -85,7 +102,7 @@ $(document).ready(function() {
 
   $("#searchbutton").click(function(event) {
     event.preventDefault();
-    var searchFor = $("#find").val();;
+    var searchFor = $("#find").val();
     displayList("#accounts", search(searchFor));
   });
 
@@ -116,6 +133,7 @@ $(document).ready(function() {
     $(".selected").hide();
     $("#tinder").slideDown();
     // $(".chosen").text(match.firstName);
+
     populateInfo(".match-result", match);
   });
 
@@ -169,7 +187,6 @@ $(document).ready(function() {
 
     displayList("#accounts", accounts);
   });
-
   document.getElementById("homelink").onclick = function() {
     location.href = "index.html";
   };
@@ -191,13 +208,23 @@ var displayList = function(id, list) {
   });
 };
 
-var addStudent = function(id, student) {
+var addStudent = function(id, student, list) {
   $(id + "-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
 
   $(id + "-list li").last().click(function() {
     $("#match-choice").hide();
     populateInfo(".match-criteria", student);
     populateInfo(id + "-info", student);
+    studentLastName= student.lastName;
+    studentLocation= student.location;
+    $("#matchLocation").click(function() {
+      $(".selected").hide();
+      populateInfo(".match-result", locationMatch(studentLocation, studentLastName));
+      if (populateInfo) {
+        $("#tinder").show();
+      }
+    });
+
   });
 };
 
