@@ -41,15 +41,11 @@
       <div class="panel">
         <div class="panel-body">
           <div class="row">
-            <div class="col-sm-6">
-              <p id="tinder">It's a match!</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
               <!-- create id "match-choice"for when this account-list dissapears it won't affect other accounts list -->
               <div id="match-choice">
-                <p>Select the student you want to match:</p>
+                <br>
+                <p class="match-select">Select the student you want to match:</p>
                 <ul id="accounts-list" class="list">
                 </ul>
               </div>
@@ -64,11 +60,17 @@
                 <p><strong>Previous job: </strong><span class="job"></span></p>
                 <p><strong>Favorite Destination: </strong><span class="favorite-destination"></span></p>
                 <p><strong>Hobbies: </strong><span class="hobbies"></span></p>
+
+                <p>Match me by:<button type="button" class="btn">Location</button><button type="button" class="btn">Favorite color</button><button id="randomly" type="button" class="btn">Randomly!</button></p>
               </div>
-              <p>Match me by:<button type="button" class="btn">Location</button><button type="button" class="btn">Favorite color</button><button id="randomly"type="button" class="btn">Randomly!</button></p>
 
             </div>
-            <div class="col-md-6">
+
+            <div class="col-md-2">
+              <p id="tinder">It's a match!</p>
+            </div>
+
+            <div class="col-md-5">
               <!-- <div id="empty-match">
 
               </div> -->

@@ -213,9 +213,11 @@ a:hover {
 #tinder{
   display: none;
   font-family: 'Dancing Script', cursive;
-  font-size: 60px;
+  font-size: 50px;
   color: red;
-  text-align: right;
+  text-align: center;
+  margin-top: 20px;
+  vertical-align: middle;
 }
 
 #map-section {
@@ -236,4 +238,15 @@ a:hover {
 img {
   margin: auto;
   display: block;
+}
+
+.match-select {
+  font-weight: bold;
+}
+
+.match-criteria, .match-result {
+  background-color: #69A78D;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 30px;
 }

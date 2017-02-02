@@ -114,7 +114,7 @@ $(document).ready(function() {
   $("#randomly").click(function() {
     var match = randomMatch(accounts);
     $(".selected").hide();
-    $("#tinder").show();
+    $("#tinder").slideDown();
     // $(".chosen").text(match.firstName);
     populateInfo(".match-result", match);
   });
