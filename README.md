@@ -31,7 +31,7 @@ _A webpage that allows a user to input their information as a contact, as well a
 |Select match "By Location"|Displays random student from same area on right|Bob Smith, "It's a match!"|
 |Select match "Randomly"|Displays random student on right|Jane Doe, "It's a match!"|
 
-Memory Game Specifications
+## Memory Game Specifications
 
 |Example Input|Output|
 |Select number of students to play with|"4"|
