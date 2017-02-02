@@ -218,7 +218,7 @@ var populateInfo = function(id, account) {
   $(id + " .repo-link").text(userGitHubURL);
   $(id + " .repo-link").attr("href", userGitHubURL);
 
-  $(id).css("color", account.favoriteColor);
+  $(id).css({"color": account.favoriteColor, "text-shadow": "2px 1px 4px #2A7374"});
   $(id).show();
 };
 
