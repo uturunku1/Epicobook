@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="js/jquery-3.1.1.js" charset="utf-8"></script>
+    <script src="js/scripts.js" charset="utf-8"></script>
+    <script src="js/populate.js"></script>
+    <script src="js/game-scripts.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Coming+Soon|Kalam" rel="stylesheet">
+    <title>Epicobook</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="topbar">
+          <nav class="navbar navbar-toggleable-md navbar-light bg-faded" id="navbar">
+            <a class="navbar-brand" href="index.html" id="titlename">Epicobook</a>
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" id="homelink">Home</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" id="joinlink">Join!</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" id="matchlink">Student Match</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="forumlink">Epicodus Forum</a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" id="find" value="">
+                <button class="btn" type="submit" id="searchbutton">Search</button>
+              </form>
+          </nav>
+          <h6>Welcome to Epicobook, a database for Epicodus students.</h6>
+      </div>
+
+      <div class="panel">
+        <div class="panel-body" id="memory-game">
+          <p>Here is a game. Choose how many students will be in your game.</p>
+          <form id="new-game">
+            <select class="student-number">
+            </select>
+            <p>Click Start.</p>
+            <button type="submit" class="btn">Play!</button>
+          </form>
+
+          <div id="game-board">
+
+          </div>
+        </div>
+
+      <footer>
+        <p><a href="https://www.epicodus.com">www.epicodus.com</a></p>
+        <p>By: Stella Huayhuaca, Erica Wright, Phil Putnam, and Patrick McGreevy</p>
+        <p><strong>Copyright 2017</strong></p>
+      </footer>
+    </div>
+  </body>
+</html>
