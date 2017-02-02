@@ -56,17 +56,41 @@ $(document).ready(function() {
     for (var index = 1; index <= userInput; index ++) {
       var tempRandomNumber = random(accounts.length);
       var namePicNumAssociation = [];
-      namePicNumAssociation.push(accounts[tempRandomNumber].pictureURL);
+      var pictureDisplay = "<img src='" + accounts[tempRandomNumber].pictureURL + "' alt='student image' class='hidden'>";
+      namePicNumAssociation.push(pictureDisplay);
       namePicNumAssociation.push(tempRandomNumber);
       game.addCard(namePicNumAssociation);
       namePicNumAssociation = [];
-      namePicNumAssociation.push(accounts[tempRandomNumber].firstName);
+      var nameDisplay = "<p class='hidden'>" + accounts[tempRandomNumber].firstName + "</p>";
+      namePicNumAssociation.push(nameDisplay);
       namePicNumAssociation.push(tempRandomNumber);
       game.addCard(namePicNumAssociation);
     }
-    alert(game.studentCards);
-    alert(shuffle(game.studentCards));
+    // alert(game.studentCards);
+    shuffle(game.studentCards);
+
+    game.studentCards.forEach(function(cardItem) {
+      var itemToDisplay = cardItem[0];
+      var classNumber = cardItem[1].toString();
+      $("#game-board").append("<div>" + itemToDisplay + "</div>");
+      $("div#game-board").children("div").last().addClass(classNumber);
 
 
+      // $("#game-board div").last().click(function() {
+      //   $(this).children("img").removeClass("hidden");
+      // });
+
+
+    }); // end of forEach function
+
+
+
+  }); // end of submit
+
+  $("div#game-board div").each(function() {
+    $(this).click(function() {
+      $("img").toggleClass("hidden");
+    });
   });
-});
+
+}); // end of $(document).ready
