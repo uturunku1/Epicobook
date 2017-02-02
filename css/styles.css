@@ -203,7 +203,7 @@ a:hover {
   border-radius: 15px;
 }
 
-#homelink, #joinlink, #forumlink, #matchlink {
+#homelink, #joinlink, #forumlink, #matchlink, #gamelink {
   cursor: pointer;
 }
 
@@ -235,9 +235,26 @@ a:hover {
   width: 100%;
 }
 
-img {
+#accounts-info img {
   margin: auto;
   display: block;
+}
+
+
+#game-board {
+  display: block;
+}
+
+#game-board div {
+  float: left;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  border: solid 2px black;
+}
+
+.hidden {
+  display: none;
 }
 
 .match-select {
