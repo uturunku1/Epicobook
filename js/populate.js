@@ -57,7 +57,7 @@ accounts.push(ash);
 var felix = new Account("Felix", "Oporto", "felixop8@gmail.com", "Felixop8", ["coding"], "green", "Spain", "1-4 months", "Tj's", "Spain", "NE", "img/felix.png");
 accounts.push(felix);
 
-var zach = new Account("Zach", "Swanson", "Zach.j.seanson@gmail.com", "Zjswanson", ["board games", "cooking"], "lightgray", "", "", "HR Consultant", "Portland", "N", "img/zach.png");
+var zach = new Account("Zach", "Swanson", "Zach.j.seanson@gmail.com", "Zjswanson", ["board games", "cooking"], "lightgray", "", "None", "HR Consultant", "Portland", "N", "img/zach.png");
 accounts.push(zach);
 
 var jay = new Account("Jay", "Freeman", "Jaythinkshappiness@gmail.com", "Jaythinkshappiness", ["graffiti", "street art", "my wife", "living others", "Buddhism"], "blue", "Keajra", "None", "Cannabis farmer", "Portland", "NE", "img/jay.png");

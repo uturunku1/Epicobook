@@ -196,6 +196,9 @@ $(document).ready(function() {
   document.getElementById("matchlink").onclick = function() {
     location.href = "match.html";
   };
+  document.getElementById("gamelink").onclick = function() {
+    location.href = "memory-game.html";
+  };
   document.getElementById("forumlink").onclick = function() {
     location.href = "http://forum.epicodus.com/login";
   };
