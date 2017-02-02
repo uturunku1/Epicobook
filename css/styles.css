@@ -203,7 +203,7 @@ a:hover {
   border-radius: 15px;
 }
 
-#homelink, #joinlink, #forumlink, #matchlink {
+#homelink, #joinlink, #forumlink, #matchlink, #gamelink {
   cursor: pointer;
 }
 
