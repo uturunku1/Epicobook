@@ -112,6 +112,7 @@ $(document).ready(function() {
         if (comparison(comparFlip1, comparFlip2)) {
           comparFlip1 = "";
           comparFlip2 = "";
+          alert("NICE!");
         }
       });
 
