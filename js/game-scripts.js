@@ -1,9 +1,19 @@
 //Back-end
+function Game(numberOfAccounts) {
+  this.studentCards = [];
+  this.numberOfAccounts = numberOfAccounts;
+}
+
+Game.prototype.clearCards = function() {
+  this.studentCards = [];
+}
+Game.prototype.addCard = function(accountItems) {
+  this.studentCards.push(accountItems);
+}
+
 function random(max) {
   return Math.floor(Math.random() * max);
 }
-
-
 
 
 //Front-end
@@ -16,20 +26,25 @@ var selectStudents = function() {
 
 $(document).ready(function() {
   selectStudents();
-  var studentCards = [];
 
   $("#new-game").submit(function(event) {
     event.preventDefault();
-
-    studentCards = [];
     var userInput = $(".student-number").val();
+    var game = new Game(userInput);
+    game.clearCards();
+
     for (var index = 1; index <= userInput; index ++) {
       var tempRandomNumber = random(accounts.length);
-      studentCards.push(accounts[tempRandomNumber].pictureURL);
-      studentCards.push(accounts[tempRandomNumber].firstName);
-      alert(studentCards);
-      // $("#game-board").append("<div>Hello</div>");
+      var namePicNumAssociation = [];
+      namePicNumAssociation.push(accounts[tempRandomNumber].pictureURL);
+      namePicNumAssociation.push(tempRandomNumber);
+      game.addCard(namePicNumAssociation);
+      namePicNumAssociation = [];
+      namePicNumAssociation.push(accounts[tempRandomNumber].firstName);
+      namePicNumAssociation.push(tempRandomNumber);
+      game.addCard(namePicNumAssociation);
     }
+    alert(game.studentCards);
 
 
   });
