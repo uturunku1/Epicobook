@@ -76,21 +76,12 @@ $(document).ready(function() {
       $("div#game-board").children("div").last().addClass(classNumber);
 
 
-      // $("#game-board div").last().click(function() {
-      //   $(this).children("img").removeClass("hidden");
-      // });
-
+      $("div#game-board div").last().click(function() {
+        $(this).children("img, p").show();
+      });
 
     }); // end of forEach function
 
-
-
   }); // end of submit
-
-  $(".hidden").each(function() {
-    $(this).click(function() {
-      $("img").addClass("clicked");
-    });
-  });
 
 }); // end of $(document).ready
