@@ -99,6 +99,7 @@ $(document).ready(function() {
   alphabeticalSort(accounts);
   displayList("#accounts", accounts);
 
+
   $("#searchbutton").click(function(event) {
     event.preventDefault();
     var searchFor = $("#find").val();
@@ -161,6 +162,8 @@ $(document).ready(function() {
   $("#form-panel").submit(function(event) {
     event.preventDefault();
     $("#form-panel").hide();
+    $("#thanks").show();
+    $("#list-column").show();
 
     var userFirstName = $("#first-name").val();
     var userLastName = $("#last-name").val();

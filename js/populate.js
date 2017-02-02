@@ -9,7 +9,7 @@ accounts.push(erica);
 var sean = new Account("Sean", "Peterson","seanpeterson11@gmail.com", "Seanpeterson", ["doing fun stuff"], "blue", "Chiang Mai", "1-4 weeks", "Doer of things", "United States", "NE", "img/sean.png");
 accounts.push(sean);
 
-var david = new Account("David", "Rolfs", "rolfs97@yahoo.com", "davidrolfs", ["golfing", "snowboarding", "hiking"], "yellow", "Whistler B.C.", "1-4 weeks", "Amazon shipping warehouse", "Milwaukie WI", "", "img/david.png");
+var david = new Account("David", "Rolfs", "rolfs97@yahoo.com", "davidrolfs", ["golfing", "snowboarding", "hiking"], "yellow", "Whistler B.C.", "1-4 weeks", "Amazon shipping warehouse", "Milwaukie WI", "", "img/noimage.png");
 accounts.push(david);
 
 var matt = new Account("Matt", "Kelley", "m_kelley2@yahoo.com", "mkelley2", ["video games", "hockey", "movies"], "red", "Colorado River", "1-4 months", "Amazon customer service", "San Diego", "SW", "img/matt.png");
