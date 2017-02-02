@@ -15,6 +15,26 @@ function random(max) {
   return Math.floor(Math.random() * max);
 }
 
+// Fisher-yates shuffle, found on google
+function shuffle(array) {
+  var m = array.length, t, i;
+
+  // while m is not negative
+  while (m) {
+
+    // grab random number subtract 1 from m
+    i = Math.floor(Math.random() * m--);
+
+    // make copy of the last element in the array
+    t = array[m];
+    // overwrite last array element with the element found at random i
+    array[m] = array[i];
+    // overwrite array[i] with copy of last element
+    array[i] = t;
+  }
+  // return shuffled array
+  return array;
+}
 
 //Front-end
 var selectStudents = function() {
@@ -45,6 +65,7 @@ $(document).ready(function() {
       game.addCard(namePicNumAssociation);
     }
     alert(game.studentCards);
+    alert(shuffle(game.studentCards));
 
 
   });
