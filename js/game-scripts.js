@@ -87,9 +87,9 @@ $(document).ready(function() {
 
   }); // end of submit
 
-  $("div#game-board div").each(function() {
+  $(".hidden").each(function() {
     $(this).click(function() {
-      $("img").toggleClass("hidden");
+      $("img").addClass("clicked");
     });
   });
 
