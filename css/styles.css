@@ -204,7 +204,7 @@ a:hover {
   cursor: pointer;
 }
 
-#match-result {
+#match-result, #match-criteria, .match-result {
   display: none;
 }
 

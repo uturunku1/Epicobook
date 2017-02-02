@@ -41,13 +41,12 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-md-6">
+              <p>Select the student you want to match:</p>
               <div id="match-choice">
                 <ul id="accounts-list" class="list">
                 </ul>
               </div>
               <div id="match-criteria">
-                <p>Match me by:<button type="button" class="btn">Location</button><button type="button" class="btn">Favorite color</button><button id="randomly"type="button" class="btn">Randomly!</button></p>
-                <p>You selected:</p>
                 <p><strong>Name: </strong><span class="first-name"></span>&nbsp;<span class="last-name"></span></p>
                 <p><strong>From: </strong><span class="from"></span></p>
                 <p><strong>E-mail address: </strong><span class="email"></span></p>
@@ -57,12 +56,16 @@
                 <p><strong>Favorite Destination: </strong><span class="favorite-destination"></span></p>
                 <p><strong>Hobbies: </strong><span class="hobbies"></span></p>
               </div>
+              <p>Match me by:<button type="button" class="btn">Location</button><button type="button" class="btn">Favorite color</button><button id="randomly"type="button" class="btn">Randomly!</button></p>
+
             </div>
             <div class="col-md-6">
               <div id="empty-match">
-                <p>Select a student from the list to match them up with another!</p>
+
               </div>
-              <div id="accounts-info" class="match-result">
+              <div class="match-result">
+                <!-- id="accounts-info"  -->
+                <p>It's a match!</p>
                 <p>Your match: <span class="chosen"></span></p>
                 <p><strong>Name: </strong><span class="first-name"></span>&nbsp;<span class="last-name"></span></p>
                 <p><strong>From: </strong><span class="from"></span></p>

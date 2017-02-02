@@ -110,6 +110,12 @@ $(document).ready(function() {
     displayList("#accounts", accounts);
   });
 
+  $("#match-choice").last().click(function() {
+    $("#match-choice").hide();
+    $("#match-criteria").show();
+    populateInfo("#match-criteria", student);
+  });
+
   $("#randomly").click(function() {
     var match = randomMatch(accounts);
     $(".chosen").text(match.firstName);
