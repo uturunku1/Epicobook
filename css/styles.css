@@ -207,8 +207,15 @@ a:hover {
   cursor: pointer;
 }
 
-#match-result {
+.match-criteria, .match-result {
   display: none;
+}
+#tinder{
+  display: none;
+  font-family: 'Dancing Script', cursive;
+  font-size: 60px;
+  color: red;
+  text-align: right;
 }
 
 #map-section {
