@@ -110,15 +110,11 @@ $(document).ready(function() {
     displayList("#accounts", accounts);
   });
 
-  $("#match-choice").last().click(function() {
-    $("#match-choice").hide();
-    $("#match-criteria").show();
-    populateInfo("#match-criteria", student);
-  });
-
   $("#randomly").click(function() {
     var match = randomMatch(accounts);
-    $(".chosen").text(match.firstName);
+    $(".selected").hide();
+    $("#tinder").show();
+    // $(".chosen").text(match.firstName);
     populateInfo(".match-result", match);
   });
 
@@ -149,8 +145,6 @@ $(document).ready(function() {
   $("#form-panel").submit(function(event) {
     event.preventDefault();
     $("#form-panel").hide();
-
-    $("#thanks").show();
 
     var userFirstName = $("#first-name").val();
     var userLastName = $("#last-name").val();
@@ -198,6 +192,8 @@ var addStudent = function(id, student) {
   $(id + "-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
 
   $(id + "-list li").last().click(function() {
+    $("#match-choice").hide();
+    populateInfo(".match-criteria", student);
     populateInfo(id + "-info", student);
   });
 };
