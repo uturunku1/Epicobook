@@ -24,7 +24,7 @@ accounts.push(azure);
 var maggie = new Account("Maggie", "Harrington", "maggie.harrington@gmail.com", "maggie-harrington", ["hiking", "running", "travel", "photography", "cooking", "gardening"], "purple", "Italy", "1-4 weeks", "Catering chef", "Ashland, OR", "", "img/noimage.png");
 accounts.push(maggie);
 
-var keith = new Account("Keith", "Evans", "kwlevans@gmail.com", "Kwlevans", ["filling out surveys", "surving out fillveys"], "gray", "Home", "1-4 months", "College coaching", "Idaho", "NE", "img/keith.png");
+var keith = new Account("Keith", "Evans", "kwlevans@gmail.com", "Kwlevans", ["filling out surveys", "surving out fillveys"], "lightgray", "Home", "1-4 months", "College coaching", "Idaho", "NE", "img/keith.png");
 accounts.push(keith);
 
 var drew = new Account("Drew", "Devlin", "andrewkdevlin23@gmail.com", "AndrewDevlin", ["hiking"], "blue", "NYC", "1-4 months", "Plumber", "New Jersey", "SE", "img/drew.png");
@@ -57,7 +57,7 @@ accounts.push(ash);
 var felix = new Account("Felix", "Oporto", "felixop8@gmail.com", "Felixop8", ["coding"], "green", "Spain", "1-4 months", "Tj's", "Spain", "NE", "img/felix.png");
 accounts.push(felix);
 
-var zach = new Account("Zach", "Swanson", "Zach.j.seanson@gmail.com", "Zjswanson", ["board games", "cooking"], "gray", "", "", "HR Consultant", "Portland", "N", "img/zach.png");
+var zach = new Account("Zach", "Swanson", "Zach.j.seanson@gmail.com", "Zjswanson", ["board games", "cooking"], "lightgray", "", "None", "HR Consultant", "Portland", "N", "img/zach.png");
 accounts.push(zach);
 
 var jay = new Account("Jay", "Freeman", "Jaythinkshappiness@gmail.com", "Jaythinkshappiness", ["graffiti", "street art", "my wife", "living others", "Buddhism"], "blue", "Keajra", "None", "Cannabis farmer", "Portland", "NE", "img/jay.png");
