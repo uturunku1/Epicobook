@@ -114,7 +114,6 @@ $(document).ready(function() {
     var match = randomMatch(accounts);
     $(".selected").hide();
     $("#tinder").show();
-    // $(".chosen").text(match.firstName);
     populateInfo(".match-result", match);
   });
 
@@ -166,7 +165,6 @@ $(document).ready(function() {
 
     displayList("#accounts", accounts);
   });
-
   document.getElementById("homelink").onclick = function() {
     location.href = "index.html";
   };
@@ -195,6 +193,11 @@ var addStudent = function(id, student) {
     $("#match-choice").hide();
     populateInfo(".match-criteria", student);
     populateInfo(id + "-info", student);
+    studentLocation= student.location;
+    $("#matchLocation").click(function(Account) {
+      alert(studentLocation);      
+    });
+
   });
 };
 
