@@ -31,16 +31,19 @@ footer {
   border-radius: 10px;
   margin-top: 20px;
   padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 #accounts-info {
   display: none;
+  padding: 40px;
 }
 
 #fav-color {
   height: 40px;
 }
-#email{
+
+#email {
   width: 300px;
 }
 
@@ -204,15 +207,15 @@ a:hover {
   cursor: pointer;
 }
 
-#match-result {
+.match-criteria, .match-result {
   display: none;
 }
-
-#student-list {
-  background-color: #9CC5A1;
-  margin-top: 20px;
-  border-radius: 15px;
-  padding: 30px;
+#tinder{
+  display: none;
+  font-family: 'Dancing Script', cursive;
+  font-size: 60px;
+  color: red;
+  text-align: right;
 }
 
 #map-section {
@@ -220,4 +223,17 @@ a:hover {
   margin: auto;
   text-align: center;
   display: none;
+}
+
+#list-column {
+  display: none;
+}
+
+.row {
+  width: 100%;
+}
+
+img {
+  margin: auto;
+  display: block;
 }

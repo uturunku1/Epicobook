@@ -8,6 +8,7 @@
     <script src="js/scripts.js" charset="utf-8"></script>
     <script src="js/populate.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Coming+Soon|Kalam" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
     <title>Epicobook</title>
   </head>
   <body>
@@ -40,30 +41,41 @@
       <div class="panel">
         <div class="panel-body">
           <div class="row">
+            <div class="col-sm-6">
+              <p id="tinder">It's a match!</p>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-6">
+              <!-- create id "match-choice"for when this account-list dissapears it won't affect other accounts list -->
               <div id="match-choice">
+                <p>Select the student you want to match:</p>
                 <ul id="accounts-list" class="list">
                 </ul>
               </div>
-              <div id="match-criteria">
-                <p>Match me by:<button type="button" class="btn">Location</button><button type="button" class="btn">Favorite color</button><button id="randomly"type="button" class="btn">Randomly!</button></p>
-                <p>You selected:</p>
+              <div class="match-criteria">
+                <p class="selected">You selected:</p>
+                <p><img src="" alt="picture of student"></p>
                 <p><strong>Name: </strong><span class="first-name"></span>&nbsp;<span class="last-name"></span></p>
                 <p><strong>From: </strong><span class="from"></span></p>
                 <p><strong>E-mail address: </strong><span class="email"></span></p>
-                <p><strong>Git profile: </strong><a id="repo-link" href=""></a></p>
+                <p><strong>Git profile: </strong><a class="repo-link" href=""></a></p>
                 <p><strong>Coding Experience: </strong><span class="experience"></span></p>
                 <p><strong>Previous job: </strong><span class="job"></span></p>
                 <p><strong>Favorite Destination: </strong><span class="favorite-destination"></span></p>
                 <p><strong>Hobbies: </strong><span class="hobbies"></span></p>
               </div>
+              <p>Match me by:<button type="button" class="btn">Location</button><button type="button" class="btn">Favorite color</button><button id="randomly"type="button" class="btn">Randomly!</button></p>
+
             </div>
             <div class="col-md-6">
-              <div id="empty-match">
-                <p>Select a student from the list to match them up with another!</p>
-              </div>
-              <div id="accounts-info" class="match-result">
-                <p>Your match: <span class="chosen"></span></p>
+              <!-- <div id="empty-match">
+
+              </div> -->
+              <div class="match-result">
+                <!-- id="accounts-info"  -->
+                <!-- <p>Your match: <span class="chosen"></span></p> -->
+                <p><img src="" alt="picture of student"></p>
                 <p><strong>Name: </strong><span class="first-name"></span>&nbsp;<span class="last-name"></span></p>
                 <p><strong>From: </strong><span class="from"></span></p>
                 <p><strong>E-mail address: </strong><span class="email"></span></p>

@@ -82,6 +82,7 @@ $(document).ready(function() {
   alphabeticalSort(accounts);
   displayList("#accounts", accounts);
 
+
   $("#searchbutton").click(function(event) {
     event.preventDefault();
     var searchFor = $("#find").val();;
@@ -112,7 +113,9 @@ $(document).ready(function() {
 
   $("#randomly").click(function() {
     var match = randomMatch(accounts);
-    $(".chosen").text(match.firstName);
+    $(".selected").hide();
+    $("#tinder").show();
+    // $(".chosen").text(match.firstName);
     populateInfo(".match-result", match);
   });
 
@@ -143,8 +146,8 @@ $(document).ready(function() {
   $("#form-panel").submit(function(event) {
     event.preventDefault();
     $("#form-panel").hide();
-
     $("#thanks").show();
+    $("#list-column").show();
 
     var userFirstName = $("#first-name").val();
     var userLastName = $("#last-name").val();
@@ -192,6 +195,8 @@ var addStudent = function(id, student) {
   $(id + "-list").append("<li><span class='students'>" + student.fullName() + "</span></li>");
 
   $(id + "-list li").last().click(function() {
+    $("#match-choice").hide();
+    populateInfo(".match-criteria", student);
     populateInfo(id + "-info", student);
   });
 };
