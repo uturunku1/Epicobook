@@ -1,6 +1,6 @@
 var selectStudents = function() {
-  var a = accounts.length;
-  for (var index = 2; index <= a; index ++) {
+  var accountTotal = accounts.length;
+  for (var index = 2; index <= accountTotal; index ++) {
     $(".student-number").append("<option>" + index + "</option>");
   }
 };
@@ -13,8 +13,12 @@ $(document).ready(function() {
 
   $("#new-game").submit(function(event) {
     event.preventDefault();
+    var userInput = $(".student-number").val();
+    for (var index = 1; index <= userInput; index ++) {
+      $("#game-board").append("<div>Hello</div>");
+    }
 
-    
+
 
   });
 });
